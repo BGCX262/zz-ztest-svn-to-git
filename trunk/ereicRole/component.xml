@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://www.h2isea.com/schema/component-0.5.xsd"
+	id="ereicRole" name="搭载规则管理" moduleId="shipDataManagement">
+ 
+    <!-- 菜单进入页 -->
+    <Function name="搭载规则编辑" id="ereicRole.forSelect">
+        <property name="menu" value="1" />
+        <property name="url" value="/EreicRoleController.may?method=forSelect" />
+    </Function>
+    <Function name="搭载规则查询" id="ereicRole.forSearch">
+        <property name="menu" value="2" />
+        <property name="url" value="/EreicRoleController.may?method=forSearch" />
+    </Function>
+</Component>

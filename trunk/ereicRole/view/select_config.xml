@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:may="http://www.h2isea.com/may">
+	<!--通过查询菜单进入-->
+	<case fid="ereicRole.forSearch">
+		<may:text id="insert" hide="true"></may:text>
+		<may:text id="update" hide="true"></may:text>
+		<may:text id="delete" hide="true"></may:text>	
+		<may:text id="forPType" hide="true"></may:text>	
+	</case>
+	<!--通过编制菜单进入-->
+	<case fid="ereicRole.forSelect">
+		<may:text id="insert" ></may:text>
+		<may:text id="update" ></may:text>
+		<may:text id="delete" ></may:text>
+		<may:text id="forPType" ></may:text>
+	</case>
+</config>

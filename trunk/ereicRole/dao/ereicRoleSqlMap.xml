@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ereicRole">
+	<typeAlias alias="ereicRole" type="com.h2isea.corp.ereicRole.model.EreicRole" />
+	<!-- 增加 -->
+	<insert id="insert" parameterClass="ereicRole">
+		INSERT INTO corp.corp_ereic_rule(
+		<dynamic>
+		    <isNotNull  property="projectCode">project_code,</isNotNull>
+	        <isNotNull  property="projectName">project_name,</isNotNull>
+		    <isNotNull  property="productCode">product_code,</isNotNull>
+	        <isNotNull  property="productName">product_name,</isNotNull>
+	        <isNotNull  property="maxLiftUp">max_lift_up,</isNotNull>
+	        <isNotNull  property="minSectionWeight">min_section_weight,</isNotNull>
+	        <isNotNull  property="fSectionCode">f_section_code,</isNotNull>
+	        <isNotNull  property="aSectionCode">a_section_code,</isNotNull>
+	        <isNotNull  property="remark">remark,</isNotNull>
+		</dynamic>
+		    seq_id)
+		values(
+	  	<dynamic>
+	  	    <isNotNull  property="projectCode">#projectCode#,</isNotNull>
+	        <isNotNull  property="projectName">#projectName#,</isNotNull> 
+	  	    <isNotNull  property="productCode">#productCode#,</isNotNull>
+	        <isNotNull  property="productName">#productName#,</isNotNull>
+	        <isNotNull  property="maxLiftUp">#maxLiftUp#,</isNotNull>
+	        <isNotNull  property="minSectionWeight">#minSectionWeight#,</isNotNull>
+	        <isNotNull  property="fSectionCode">#fSectionCode#,</isNotNull>
+	        <isNotNull  property="aSectionCode">#aSectionCode#,</isNotNull>
+			<isNotNull  property="remark">#remark#,</isNotNull>
+		</dynamic>
+	  		#id#)  	
+	</insert>
+
+	<!-- 删除-->
+	<delete id="delete" parameterClass="ereicRole">
+		DELETE FROM
+		corp.corp_ereic_rule
+		WHERE seq_id = #id#
+	</delete>
+
+	<!-- 更新-->
+	<update id="update" parameterClass="ereicRole">	
+	UPDATE corp.corp_ereic_rule set
+		<isParameterPresent removeFirstPrepend="true">
+			<isNotEmpty property="projectCode" prepend=",">
+				 project_code=#projectCode#
+			</isNotEmpty>
+			<isNotEmpty property="projectName" prepend=",">
+				 project_name=#projectName#
+			</isNotEmpty>
+			<isNotEmpty property="productCode" prepend=",">
+				 product_code=#productCode#
+			</isNotEmpty>
+			<isNotEmpty property="productName" prepend=",">
+				 product_name=#productName#
+			</isNotEmpty>
+			<isNotEmpty property="maxLiftUp" prepend=",">
+				 max_lift_up=#maxLiftUp#
+			</isNotEmpty>
+			<isNotEmpty property="minSectionWeight" prepend=",">
+				 min_section_weight=#minSectionWeight#
+			</isNotEmpty>
+			<isNotEmpty property="fSectionCode" prepend=",">
+				 f_section_code=#fSectionCode#
+			</isNotEmpty>
+			<isNotEmpty property="aSectionCode" prepend=",">
+				 a_section_code=#aSectionCode#
+			</isNotEmpty>
+			<isNotEmpty property="remark" prepend=",">
+				 remark =#remark#
+			</isNotEmpty>
+			
+			<isNull property="projectCode" prepend=",">
+				 project_code=null
+			</isNull>
+			<isNull property="projectName" prepend=",">
+				 project_name=null
+			</isNull>
+			<isNull property="productCode" prepend=",">
+				 product_code=null
+			</isNull>
+			<isNull property="productName" prepend=",">
+				 product_name=null
+			</isNull>
+			<isNull property="maxLiftUp" prepend=",">
+				 max_lift_up=null
+			</isNull>
+			<isNull property="minSectionWeight" prepend=",">
+				 min_section_weight=null
+			</isNull>
+			<isNull property="fSectionCode" prepend=",">
+				 f_section_code=null
+			</isNull>
+			<isNull property="aSectionCode" prepend=",">
+				 a_section_code=null
+			</isNull>
+			<isNull property="remark" prepend=",">
+				 remark =null
+			</isNull>
+			WHERE  seq_id=#id#
+		</isParameterPresent>				
+	</update>
+
+	<!-- 查询某条件下的记录总数，分页时使用 -->
+	<select id="count" resultClass="Integer">
+		SELECT count(1)
+		FROM corp.corp_ereic_rule
+		<isParameterPresent prepend = "where"
+			removeFirstPrepend="true">
+			<isNotEmpty prepend="and" property="projectCode">
+				project_code like '%$projectCode$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="projectName">
+				project_name like '%$"projectName"$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="productCode">
+				product_code like '%$productCode$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="productName">
+				product_name like '%$productName$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="maxLiftUp">
+				max_lift_up like '%$maxLiftUp$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="minSectionWeight">
+				min_section_weight like '%$minSectionWeight$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fSectionCode">
+				f_section_code like '%$fSectionCode$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="aSectionCode">
+				a_section_code like '%$aSectionCode$%' 
+			</isNotEmpty>
+		</isParameterPresent>
+	</select>
+
+
+	<!-- 查询满足某条件的记录数 -->
+	<select id="selectMany" resultClass="ereicRole">
+		SELECT
+		seq_id               as id,
+        project_code         as projectCode,
+		project_name         as projectName,
+		product_code         as productCode,
+		product_name         as productName,
+		max_lift_up          as maxLiftUp,
+		min_section_weight   as minSectionWeight,
+		f_section_code       as fSectionCode,
+		a_section_code       as aSectionCode,
+		remark               as remark 
+		FROM corp.corp_ereic_rule
+		<isParameterPresent prepend="where" removeFirstPrepend="true">
+			<isNotEmpty prepend="and" property="projectCode">
+				project_code like '%$projectCode$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="projectName">
+				project_name like '%$"projectName"$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="productCode">
+				product_code like '%$productCode$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="productName">
+				product_name like '%$productName$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="maxLiftUp">
+				max_lift_up like '%$maxLiftUp$%'
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="minSectionWeight">
+				min_section_weight like '%$minSectionWeight$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="fSectionCode">
+				f_section_code like '%$fSectionCode$%' 
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="aSectionCode">
+				a_section_code like '%$aSectionCode$%' 
+			</isNotEmpty>
+		</isParameterPresent>
+	</select>
+	
+	<!-- 根据主键查询某条记录 -->
+	<select id="select" resultClass="ereicRole">
+		SELECT 
+		    seq_id as id,
+		    project_code,
+		    project_name,
+		    product_code,
+		    produce_name,
+		    max_lift_up,
+		    min_section_weight,
+		    f_section_code,
+		    a_section_code,
+			remark
+		FROM corp.corp_ereic_rule
+		WHERE corp_ereic_rule.seq_id = #id# 
+	</select>
+</sqlMap>
